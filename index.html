@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Render Billing - Preview Environment Budgets Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A; /* Dark background similar to Render UI */
+            color: #E0E0E0;
+        }
+        .card {
+            background-color: #1A1A1A; /* Card background */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .header-text {
+            color: #FFFFFF;
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 1rem;
+        }
+        .sub-header-text {
+            color: #B0B0B0;
+            font-size: 0.875rem; /* text-sm */
+            margin-bottom: 1.5rem;
+        }
+        .input-field {
+            background-color: #2A2A2A;
+            border: 1px solid #3A3A3A;
+            color: #E0E0E0;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            width: 100%;
+            font-size: 0.9rem;
+        }
+        .input-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500;
+            color: #B0B0B0;
+        }
+        .btn-primary {
+            background-color: #6B46C1; /* A purple tone for primary action */
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #7F5AD5;
+        }
+        .btn-secondary {
+            background-color: #3A3A3A;
+            color: #E0E0E0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: #4A4A4A;
+        }
+        .toggle-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .toggle-option input[type="radio"] {
+            margin-right: 0.75rem;
+            accent-color: #6B46C1; /* Purple accent for radio buttons */
+        }
+        .progress-bar-container {
+            background-color: #2A2A2A;
+            border-radius: 9999px; /* full rounded */
+            height: 0.5rem;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #6B46C1;
+            border-radius: 9999px;
+            transition: width 0.5s ease-in-out;
+        }
+        .progress-bar.amber {
+            background-color: #D69E2E; /* Amber for higher usage */
+        }
+        .progress-bar.red {
+            background-color: #E53E3E; /* Red for critical usage */
+        }
+    </style>
+</head>
+<body class="p-6 md:p-10">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Top Navigation (Mimic existing UI) -->
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25v-10.5a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 9.75v10.5a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+                <span class="text-white text-xl font-semibold">Billing</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+        </div>
+
+        <!-- Monthly Free Usage Section (Mimic existing UI) -->
+        <div class="mb-8">
+            <h2 class="header-text">Monthly Free Usage</h2>
+            <p class="sub-header-text">Review your free Render usage this month. This applies to the entire workspace.</p>
+            <p class="sub-header-text mt-0">You will be <span class="text-purple-400 font-medium">charged</span> for usage beyond your free limits. <a href="#" class="text-purple-400 hover:underline">View pricing.</a></p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="card flex flex-col items-start">
+                    <p class="text-sm text-gray-400 mb-2">Free Instance Hours</p>
+                    <p class="text-white text-2xl font-semibold">1.22 <span class="text-lg text-gray-400">hours</span></p>
+                    <p class="text-sm text-gray-400">/ 750 hours <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block align-middle ml-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg></p>
+                </div>
+                <div class="card flex flex-col items-start">
+                    <p class="text-sm text-gray-400 mb-2">Free Bandwidth</p>
+                    <p class="text-white text-2xl font-semibold">0 <span class="text-lg text-gray-400">GB</span></p>
+                    <p class="text-sm text-gray-400">/ 500 GB <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block align-middle ml-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg></p>
+                </div>
+                <div class="card flex flex-col items-start">
+                    <p class="text-sm text-gray-400 mb-2">Free Pipeline Minutes</p>
+                    <p class="text-white text-2xl font-semibold">1 <span class="text-lg text-gray-400">min</span></p>
+                    <p class="text-sm text-gray-400">/ 500 min <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline-block align-middle ml-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                    </svg></p>
+                    <a href="#" class="text-purple-400 text-sm mt-auto">Manage spend on pipeline minutes.</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Preview Environment Budgets Section -->
+        <div class="mb-8">
+            <h2 class="header-text">Preview Environment Budgets</h2>
+            <p class="sub-header-text">Set custom cost limits and actions for your Preview Environments to manage spending and prevent unexpected charges.</p>
+
+            <!-- Create New Budget Card -->
+            <div class="card">
+                <h3 class="text-white text-lg font-semibold mb-4">Create New Budget</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="budgetName" class="input-label">Budget Name (Optional)</label>
+                        <input type="text" id="budgetName" class="input-field" placeholder="e.g., 'Team A Feature Budget'">
+                    </div>
+                    <div>
+                        <label for="budgetAmount" class="input-label">Budget Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+                            <input type="number" id="budgetAmount" class="input-field pl-8" placeholder="50.00" value="50.00" step="0.01">
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">USD / month</p>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="applyBudgetType" class="input-label">Apply Budget To:</label>
+                    <select id="applyBudgetType" class="input-field">
+                        <option value="">Select Type</option>
+                        <option value="team">Team</option>
+                        <option value="repository">Repository</option>
+                        <option value="committer">Committer</option>
+                        <option value="individual-pe">Individual PE</option>
+                        <option value="project">Project</option>
+                    </select>
+                </div>
+
+                <div id="dynamicSelectorContainer" class="mb-4 hidden">
+                    <!-- Dynamic selector will be injected here by JS -->
+                </div>
+
+                <div class="mb-6">
+                    <label class="input-label">When Budget Exceeded:</label>
+                    <div class="toggle-option">
+                        <input type="radio" id="actionAlertOnly" name="budgetAction" value="alert" checked>
+                        <label for="actionAlertOnly" class="text-white text-sm">Only Alert (Send Notifications)</label>
+                    </div>
+                    <div class="toggle-option">
+                        <input type="radio" id="actionAlertEnforce" name="budgetAction" value="enforce">
+                        <label for="actionAlertEnforce" class="text-white text-sm">Alert & Enforce (Spin Down PEs)</label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label for="notificationRecipients" class="input-label">Notification Recipients (Optional)</label>
+                    <input type="text" id="notificationRecipients" class="input-field" placeholder="e.g., email@example.com, Slack Webhook URL">
+                    <p class="text-xs text-gray-500 mt-1">Separate multiple with commas.</p>
+                </div>
+
+                <div class="flex justify-end space-x-3">
+                    <button class="btn-secondary">Cancel</button>
+                    <button class="btn-primary">Create Budget</button>
+                </div>
+            </div>
+
+            <!-- Active Budgets List -->
+            <h3 class="text-white text-lg font-semibold mb-4 mt-8">Your Active Budgets</h3>
+            <div class="card p-0">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-700">
+                        <thead class="bg-gray-800">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Budget Name</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Scope</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Limit</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Current Spend</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Action</th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Edit</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-800">
+                            <!-- Example Budget 1 -->
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Team Alpha - Dev PEs</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Team: Team Alpha</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">$100.00 / month</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <p class="text-white">$75.20 <span class="text-gray-400">(75%)</span></p>
+                                    <div class="progress-bar-container mt-1">
+                                        <div class="progress-bar amber" style="width: 75%;"></div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Alert & Enforce</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-purple-400 hover:text-purple-600">Edit</a>
+                                    <a href="#" class="ml-4 text-red-400 hover:text-red-600">Delete</a>
+                                </td>
+                            </tr>
+                            <!-- Example Budget 2 -->
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Project X - Frontend</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Project: Project X</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">$50.00 / month</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <p class="text-white">$15.00 <span class="text-gray-400">(30%)</span></p>
+                                    <div class="progress-bar-container mt-1">
+                                        <div class="progress-bar" style="width: 30%;"></div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Only Alert</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-purple-400 hover:text-purple-600">Edit</a>
+                                    <a href="#" class="ml-4 text-red-400 hover:text-red-600">Delete</a>
+                                </td>
+                            </tr>
+                            <!-- Example Budget 3 -->
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Repo: auth-service</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Repository: auth-service</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">$20.00 / month</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <p class="text-white">$19.50 <span class="text-gray-400">(97%)</span></p>
+                                    <div class="progress-bar-container mt-1">
+                                        <div class="progress-bar red" style="width: 97%;"></div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Alert & Enforce</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-purple-400 hover:text-purple-600">Edit</a>
+                                    <a href="#" class="ml-4 text-red-400 hover:text-red-600">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unbilled Charges Section (Mimic existing UI) -->
+        <div class="mb-8">
+            <h2 class="header-text">Unbilled Charges</h2>
+            <p class="sub-header-text">Amounts displayed have been accrued within the month to date.</p>
+
+            <div class="card p-0">
+                <div class="flex items-center justify-between p-4 border-b border-gray-700">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                        <span class="text-white font-medium">Services</span>
+                    </div>
+                    <span class="text-white font-medium">$0.00</span>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-gray-400 mr-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <span class="text-white">whereisthebus</span>
+                            <a href="#" class="ml-2 text-purple-400 text-sm hover:underline">View service <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline-block align-baseline">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg></a>
+                        </div>
+                        <span class="text-white">$0.00</span>
+                    </div>
+                    <div class="ml-6 text-sm text-gray-400">
+                        <p>CHARGE <span class="text-white">1</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyBudgetTypeSelect = document.getElementById('applyBudgetType');
+            const dynamicSelectorContainer = document.getElementById('dynamicSelectorContainer');
+
+            applyBudgetTypeSelect.addEventListener('change', function() {
+                const selectedType = this.value;
+                dynamicSelectorContainer.innerHTML = ''; // Clear previous dynamic selector
+                dynamicSelectorContainer.classList.add('hidden');
+
+                if (selectedType) {
+                    let labelText = '';
+                    let inputHtml = '';
+
+                    switch (selectedType) {
+                        case 'team':
+                            labelText = 'Select Team:';
+                            inputHtml = `
+                                <select class="input-field">
+                                    <option value="">Choose a team</option>
+                                    <option value="team-alpha">Team Alpha</option>
+                                    <option value="team-beta">Team Beta</option>
+                                    <option value="team-gamma">Team Gamma</option>
+                                </select>
+                            `;
+                            break;
+                        case 'repository':
+                            labelText = 'Select Repository:';
+                            inputHtml = `
+                                <select class="input-field">
+                                    <option value="">Choose a repository</option>
+                                    <option value="repo-frontend">frontend-app</option>
+                                    <option value="repo-backend">backend-api</option>
+                                    <option value="repo-auth">auth-service</option>
+                                </select>
+                            `;
+                            break;
+                        case 'committer':
+                            labelText = 'Enter Committer Email/ID:';
+                            inputHtml = `<input type="text" class="input-field" placeholder="e.g., dev@example.com">`;
+                            break;
+                        case 'individual-pe':
+                            labelText = 'Enter Individual PE ID/Name:';
+                            inputHtml = `<input type="text" class="input-field" placeholder="e.g., pr-123-feature-x">`;
+                            break;
+                        case 'project':
+                            labelText = 'Select Project:';
+                            inputHtml = `
+                                <select class="input-field">
+                                    <option value="">Choose a project</option>
+                                    <option value="project-x">Project X</option>
+                                    <option value="project-y">Project Y</option>
+                                </select>
+                            `;
+                            break;
+                    }
+
+                    dynamicSelectorContainer.innerHTML = `
+                        <label class="input-label">${labelText}</label>
+                        ${inputHtml}
+                    `;
+                    dynamicSelectorContainer.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
